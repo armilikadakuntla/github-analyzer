@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GitHub Developer Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <span>◆</span> GitHub Analyzer
+    </div>
+
+    <button id="themeBtn">🌙</button>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <p class="tag">DEVELOPER INTELLIGENCE</p>
+
+        <h1>Analyze any GitHub developer.</h1>
+
+        <p class="subtitle">
+            Explore repositories, technologies, activity and developer statistics.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter GitHub username..."
+            >
+
+            <button onclick="analyzeUser()">
+                Analyze
+            </button>
+
+        </div>
+
+        <p id="error"></p>
+
+    </section>
+
+
+    <!-- LOADING -->
+
+    <div id="loading" class="loading">
+        Analyzing GitHub profile...
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboard" class="dashboard">
+
+        <!-- PROFILE -->
+
+        <div class="profile card">
+
+            <img id="avatar" src="" alt="Profile">
+
+            <div>
+
+                <h2 id="name">Developer</h2>
+
+                <p id="bio"></p>
+
+                <a id="githubLink" href="#" target="_blank">
+                    View GitHub Profile →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat card">
+                <span>Repositories</span>
+                <strong id="repos">0</strong>
+            </div>
+
+            <div class="stat card">
+                <span>Followers</span>
+                <strong id="followers">0</strong>
+            </div>
+
+            <div class="stat card">
+                <span>Following</span>
+                <strong id="following">0</strong>
+            </div>
+
+            <div class="stat card">
+                <span>Account Age</span>
+                <strong id="age">0</strong>
+            </div>
+
+        </div>
+
+
+        <!-- SCORE -->
+
+        <div class="score card">
+
+            <div>
+
+                <p class="section-label">
+                    DEVELOPER ACTIVITY SCORE
+                </p>
+
+                <h2 id="score">0/100</h2>
+
+                <p id="scoreText">
+                    Analyze a profile to calculate score.
+                </p>
+
+            </div>
+
+            <div class="score-circle">
+                <span id="scoreCircle">0</span>
+            </div>
+
+        </div>
+
+
+        <!-- CHARTS -->
+
+        <div class="charts">
+
+            <div class="card chart-card">
+
+                <h3>Technology Distribution</h3>
+
+                <canvas id="languageChart"></canvas>
+
+            </div>
+
+
+            <div class="card chart-card">
+
+                <h3>Repository Popularity</h3>
+
+                <canvas id="repoChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+        <!-- REPOSITORIES -->
+
+        <div class="repositories card">
+
+            <div class="repo-header">
+
+                <div>
+                    <p class="section-label">PROJECTS</p>
+                    <h2>Top Repositories</h2>
+                </div>
+
+                <select id="repoFilter" onchange="sortRepositories()">
+                    <option value="stars">Most Stars</option>
+                    <option value="forks">Most Forks</option>
+                    <option value="updated">Recently Updated</option>
+                </select>
+
+            </div>
+
+            <div id="repoList"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    Built with GitHub REST API
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
